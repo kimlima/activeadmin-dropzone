@@ -18,7 +18,7 @@
     var dropzone_id = "#dropzone_<%= method %>_<%= current_cycle(method) %>"; 
     var dropzone_options = { 
       url: '<%= raw upload_dropzone_path(dropzonable_id: (object.new_record? ? nil : object.id), dropzonable_class: object.class, dropzone_class: object.class.send("dropzone_#{ method }_class")) %>',
-      addRemoveLinks: true,
+      addRemoveLinks: false,
       dictCancelUpload: '<%=t "dropzone.cancel" %>',
       dictRemoveFile: '<%=t "dropzone.remove" %>',
       maxFiles: <%= defined?(max_files) ? '1' : 'null' %>,
