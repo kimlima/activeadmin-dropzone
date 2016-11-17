@@ -4,7 +4,12 @@ class DropzoneController < ApplicationController
     dropzone_class = params[:dropzone_class].constantize
     dropzone_object = dropzone_class.new
     dropzone_object.send "#{ dropzone_class.dropzone_field(:container_type) }=", params[:dropzonable_class] if dropzone_class.dropzone_field?(:container_type)
-    dropzone_object.send "#{ dropzone_class.dropzone_field(:container_id) }=", params[:dropzonable_id] if dropzone_class.dropzone_field?(:container_id)
+    if dropzone_class.dropzone_field?(:container_id)
+      dropzone_object.send "#{ dropzone_class.dropzone_field(:container_id) }=", params[:dropzonable_id]
+    else
+      dropzone_container_object = params[:dropzonable_class].constantize.create
+      dropzone_object.send "#{ dropzone_class.dropzone_field(:container_id) }=", dropzone_container_object.id
+    end
     dropzone_object.send "#{ dropzone_class.dropzone_field(:data) }=", params[:file]
     dropzone_object.send "#{ dropzone_class.dropzone_field(:custom) }=", params[:custom] if dropzone_class.dropzone_field?(:custom)
 
