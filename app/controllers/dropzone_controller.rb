@@ -16,7 +16,7 @@ class DropzoneController < ApplicationController
     if dropzone_object.save
       render json: dropzone_object.to_json
     else
-      render json: {errors: dropzone_object.errors.full_messages}, status: 500
+      render json: dropzone_object.errors.full_messages.first, status: 500
     end
   end
 
