@@ -1298,7 +1298,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
         _results = [];
         for (_j = 0, _len1 = files.length; _j < _len1; _j++) {
           file = files[_j];
-          _results.push(_this._errorProcessing(files, response || _this.options.dictResponseError.replace("{{statusCode}}", xhr.status), xhr));
+          _results.push(_this._errorProcessing(files, response.errors || _this.options.dictResponseError.replace("{{statusCode}}", xhr.status), xhr));
         }
         console.log(_results);
         return _results;
