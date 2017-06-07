@@ -16,7 +16,7 @@ class DropzoneController < ApplicationController
     if dropzone_object.save
       render json: dropzone_object.to_json
     else
-      head :error and return
+      render json: {errors: dropzone_object.errors.full_messages}, status: 422
     end
   end
 
