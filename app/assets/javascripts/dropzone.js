@@ -1293,6 +1293,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
       handleError = function() {
         console.log('handleError');
         console.log(xhr);
+        console.log(response);
         var _j, _len1, _results;
         _results = [];
         for (_j = 0, _len1 = files.length; _j < _len1; _j++) {
