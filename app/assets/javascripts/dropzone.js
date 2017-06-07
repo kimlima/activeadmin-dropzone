@@ -1347,7 +1347,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
             response = JSON.parse(response);
           } catch (_error) {
             e = _error;
-            console.log("Response with error: " + response);
+            console.log("Response with error: " + e);
             response = "Invalid JSON response from server.";
           }
         }
