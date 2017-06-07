@@ -1291,12 +1291,15 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
       xhr.withCredentials = !!this.options.withCredentials;
       response = null;
       handleError = function() {
+        console.log('handleError');
+        console.log(xhr);
         var _j, _len1, _results;
         _results = [];
         for (_j = 0, _len1 = files.length; _j < _len1; _j++) {
           file = files[_j];
           _results.push(_this._errorProcessing(files, response || _this.options.dictResponseError.replace("{{statusCode}}", xhr.status), xhr));
         }
+        console.log(_results);
         return _results;
       };
       updateProgress = function(e) {
@@ -1334,6 +1337,8 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
         return _results;
       };
       xhr.onload = function(e) {
+        console.log('onload');
+        console.log(xhr);
         var _ref;
         if (files[0].status === Dropzone.CANCELED) {
           return;
@@ -1359,6 +1364,8 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
         }
       };
       xhr.onerror = function() {
+        console.log('onerror');
+        console.log(xhr);
         if (files[0].status === Dropzone.CANCELED) {
           return;
         }
